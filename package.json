@@ -1,0 +1,35 @@
+{
+  "name": "aemo",
+  "version": "1.0.0",
+  "description": "## Description AEmo is an web-based application designed to help ease the frustration revolved around driving. The application will determine the emotional state of the driver by analyzing his/her facial expressions and vocal characteristics. The application will then perform an action to bring the driver's emotional state to a neutral state.",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farid64/Aemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farid64/Aemo/issues"
+  },
+  "homepage": "https://github.com/farid64/Aemo#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.26.0",
+    "sequelize-cli": "^3.2.0"
+  }
+}
