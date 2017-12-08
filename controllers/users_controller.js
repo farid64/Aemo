@@ -28,26 +28,40 @@ router.post('/login', passport.authenticate("local", { failureFlash: 'Invalid us
 
 // register a user
 router.post('/signup', function(req,res) {
-	db.User.findAll({
-    where: {username: req.body.username}
-  }).then(function(users) {
-    if (users.length > 0) {
-      res.json({
-        duplicateUser: true
-      });
-    //At some point, make sure that only one user can be associated with an email.
-		} else {
-      db.User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-      }).then(function() {
-        res.send({redirect: '/'});
-      }).catch(function(err) {
-        res.json(err);
-      });
-    }
-	})
+	// db.aemo_user_login.findAll({
+ //    where: {user_email: req.body.user_email}
+ //  }).then(function(user_email) {
+ //    for(var i=0;i<user_email.length;i++){
+ //      if (user_email[i]===req.body.user_email) {
+ //        res.json({
+ //          duplicateUser: true
+ //        });
+ //      //At some point, make sure that only one user can be associated with an email.
+ //  		} else { 
+// }
+
+        // db.aemo_user_login.create({
+        //   userfirst_name: req.body.userlast_name,
+        //   userlast_name: req.body.userlast_name,
+        //   user_email: req.body.user_email,
+        //   user_password: req.body.user_password
+        // }).then(john => {
+        //   console.log(john.get({
+        //     plain: true
+        //   }))
+        // })
+
+
+        db.aemo_user_login.create({
+          userfirst_name: req.body.userfirst_name,
+          userlast_name: req.body.userlast_name,
+          user_email: req.body.user_email,
+          user_password: req.body.user_password
+        }).then(function() {
+          res.send({redirect: '/'});
+        }).catch(function(err) {
+          res.json(err);
+        });
 });
 
 module.exports = router;

@@ -1,25 +1,42 @@
 $(document).ready(function() {
   // Getting references to our form and input
   var signUpButton = $(".signup");
-  var usernameInput = $("input#username-input");
+  // var usernameInput = $("input#username-input");
+  var firstNameInput = $("input#firstname-input");
+  var lastNameInput = $("input#lastname-input");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
 
   var repeatPasswordInput = $("input#repeat-password-input");
   var repeatEmailInput = $("input#repeat-email-input");
 
-  // Username "on-the-fly" validation
-  usernameInput.bind('input propertychange', function() {
-    if (usernameInput.val().trim().length < 6) {
-      $("#username-form").removeClass("has-success");
+  // first name "on-the-fly" validation
+  firstNameInput.bind('input propertychange', function() {
+    if (firstNameInput.val().trim().length < 1) {
+      $("#firstname-form").removeClass("has-success");
 
-      $("#username-form").addClass("has-error");
-      $("#username-feedback").text("username must be at least 6 characters long");
+      $("#firstname-form").addClass("has-error");
+      $("#firstname-feedback").text("First Name must be at least 1 character long");
     } else {
-      $("#username-form").removeClass("has-error");
+      $("#firstname-form").removeClass("has-error");
 
-      $("#username-form").addClass("has-success");
-      $("#username-feedback").text("Username valid!");
+      $("#firstname-form").addClass("has-success");
+      $("#firstname-feedback").text("First Name valid!");
+    }
+  });
+
+    // last name "on-the-fly" validation
+  lastNameInput.bind('input propertychange', function() {
+    if (lastNameInput.val().trim().length < 1) {
+      $("#lastname-form").removeClass("has-success");
+
+      $("#lastname-form").addClass("has-error");
+      $("#lastname-feedback").text("Last Name must be at least 1 character long");
+    } else {
+      $("#lastname-form").removeClass("has-error");
+
+      $("#lastname-form").addClass("has-success");
+      $("#lastname-feedback").text("Last Name valid!");
     }
   });
 
@@ -91,36 +108,40 @@ $(document).ready(function() {
     // Replace all alerts with modals
 
     var userData = {
-      username: usernameInput.val().trim(),
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      userfirst_name: firstNameInput.val().trim(),
+      userlast_name: lastNameInput.val().trim(),
+      user_email: emailInput.val().trim(),
+      user_password: passwordInput.val().trim()
     };
 
-    if (!userData.username || !userData.email || !userData.password) {
+    if (!userData.userfirst_name || !userData.userlast_name || !userData.user_email || !userData.user_password) {
       return alert("Please don't leave fields blank");
     }
 
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.username, userData.email, userData.password);
+    signUpUser(userData.userfirst_name, userData.userlast_name, userData.user_email,userData.user_password);
     emailInput.val("");
     passwordInput.val("");
-    usernameInput.val("");
+    firstNameInput.val("");
+    lastNameInput.val("");
     repeatPasswordInput.val("");
     repeatEmailInput.val("");
   });
 
-  // Does a post to the signup route. If succesful, we are redirected to the members page
-  // Otherwise we log any errors
-  function signUpUser(username, email, password) {
+  // // Does a post to the signup route. If succesful, we are redirected to the members page
+  // // Otherwise we log any errors
+  function signUpUser(firstname, lastname, email, password) {
     $.post("/users/signup", {
-      username: username,
-      email: email,
-      password: password
+      userfirst_name: firstname,
+      userlast_name: lastname,
+      user_email: email,
+      user_password: password
     }).then(function(data) {
       if (data.duplicateUser) {
         // Replace with Modal
         alert("Sorry, that username has been taken");
       } else {
+        // console.log("data coming back " + JSON.stringify(data)); // {"redirect":"/"}
         window.location = data.redirect;
       }
     }).catch(function(err) {
@@ -129,3 +150,4 @@ $(document).ready(function() {
   }
 
 });
+

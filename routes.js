@@ -7,6 +7,6 @@ module.exports = function(app){
 		
 		app.use('/', application_controller);
 		app.use('/users', users_controller);
-		app.use('/profiles', profile_controller);
+		app.use('/profile', profile_controller);
 
 }
