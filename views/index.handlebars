@@ -1,0 +1,66 @@
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    {{> nav }}
+    {{> login-modal }}
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                    {{#unless logged_in}}
+                        <h1 class="brand-heading">AEmo - Auto Emotional Assistant.</h1>
+                        <ul class="positives_list">
+                            <p>Let us help you ease the pain and frustration revolved around driving.</p>
+                            <p>Our app will make smart suggestions based on........</p>
+                          {{!--   <a href="#" data-toggle="modal" data-target="#login-modal">Click here to let us help!</a> --}}
+                        </ul>
+                        
+                    {{/unless}}
+
+                    {{#if logged_in}}
+                    <h1>Hello.{{!-- {{name}} --}}</h1>
+                    <p>It looks like you're feeling {{!-- {{emotion}} --}}</p>    
+                    {{/if}}           
+
+{{!--                     <a href="#about" class="btn btn-circle page-scroll">
+                    <i class="fa fa-angle-double-down animated"></i> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Us</h2>
+                <p>Bleh bleh bleh.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Us</h2>
+                <p>Say hello at</p>
+                <p><a href="mailto:hello@gmail.com">hello@gmail.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+{{> footer }}
