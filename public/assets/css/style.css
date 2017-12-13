@@ -1,0 +1,287 @@
+.navigation {
+	background-color: #d0edf1;
+}
+
+.navFooter {
+	height: 10px;
+	background-color: #bdf3bd;
+}
+
+/*.underNav {
+	height: 200px;
+	background-color: red;
+}*/
+
+.content {
+	height: 300px;
+}
+
+.belowContent {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#loader-wrapper {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+    #loader {
+        display: block;
+        position: absolute;
+        left: 5vw;
+        top: 5vh;
+        width: 300px;
+        height: 300px;
+        margin: 0;
+ 
+        border: 3px solid #3498db;
+        z-index: 1500;
+
+        -webkit-animation: spin 10s linear infinite;
+		animation: spin 10s linear infinite;
+    }
+
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid #e74c3c;
+
+    -webkit-animation: spin 10s linear infinite;
+	animation: spin 10s linear infinite;
+}
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 3px solid #f9c922;
+
+    -webkit-animation: spin 5s linear infinite;
+	animation: spin 5s linear infinite;
+}
+
+#loader {
+    border: 3px solid transparent;
+    border-left-color: #3498db;
+    border-right-color: #3498db;
+    border-radius: 50%;
+}
+#loader:before {
+    border: 3px solid transparent;
+    border-left-color: #e74c3c;
+    border-right-color: #e74c3c;
+    border-radius: 50%;
+
+}
+#loader:after {
+    border: 3px solid transparent;
+    border-left-color: #f9c922;
+    border-right-color: #f9c922;
+    border-radius: 50%;
+
+}
+
+/* style for stopped circle */
+
+#loader-stop {
+        display: block;
+        position: absolute;
+        left: 5vw;
+        top: 5vh;
+        width: 300px;
+        height: 300px;
+        margin: 0;
+ 
+        border: 3px solid #3498db;
+        z-index: 1500;
+
+        border: 3px solid transparent;
+	    border-left-color: #3498db;
+	    border-right-color: #3498db;
+	    border-radius: 50%;
+    }
+
+#loader-stop:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid #e74c3c;
+
+    border: 3px solid transparent;
+    border-left-color: #e74c3c;
+    border-right-color: #e74c3c;
+    border-radius: 50%;
+
+}
+#loader-stop:after {
+    content: "Log In to Start";
+    position: absolute;
+    text-align: center;
+    line-height: 33vh;
+    font-size: 23px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 3px solid #f9c922;
+
+    border: 3px solid transparent;
+    border-left-color: #f9c922;
+    border-right-color: #f9c922;
+    border-radius: 50%;
+}
+
+/* end of stopped circle */
+
+#text {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background-color: red;
+}
+
+
+#command {
+	text-align: center;
+	color: gray;
+	font-size: 18px;
+}
+
+/* copy and paste the animation inside all 3 elements */
+/* #loader, #loader:before, #loader:after */
+ 
+/* include this only once */
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+
+/* Login CSS Start */
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  color: black;
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+.login-help{
+  font-size: 12px;
+}
+
+/* end of modal css */
+
