@@ -3,7 +3,7 @@ var express  = require('express');
 var router   = express.Router();
 var passport = require("../config/passport");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
-
+var orm = require('../models/orm/orm.js');
 
 router.get('/signup', function(req,res) {
 	res.render('users/registration', {
@@ -28,40 +28,54 @@ router.post('/login', passport.authenticate("local", { failureFlash: 'Invalid us
 
 // register a user
 router.post('/signup', function(req,res) {
-	// db.aemo_user_login.findAll({
- //    where: {user_email: req.body.user_email}
- //  }).then(function(user_email) {
- //    for(var i=0;i<user_email.length;i++){
- //      if (user_email[i]===req.body.user_email) {
- //        res.json({
- //          duplicateUser: true
- //        });
- //      //At some point, make sure that only one user can be associated with an email.
- //  		} else { 
-// }
-
-        // db.aemo_user_login.create({
-        //   userfirst_name: req.body.userlast_name,
-        //   userlast_name: req.body.userlast_name,
-        //   user_email: req.body.user_email,
-        //   user_password: req.body.user_password
-        // }).then(john => {
-        //   console.log(john.get({
-        //     plain: true
-        //   }))
-        // })
-
-
-        db.aemo_user_login.create({
-          userfirst_name: req.body.userfirst_name,
-          userlast_name: req.body.userlast_name,
-          user_email: req.body.user_email,
-          user_password: req.body.user_password
-        }).then(function() {
-          res.send({redirect: '/'});
-        }).catch(function(err) {
-          res.json(err);
-        });
+  db.aemo_user_login.findAll({
+    where: {user_email: req.body.email}
+  }).then(function(users) {
+    if (users.length > 0) {
+      res.json({
+        duplicateUser: true
+      });
+    //At some point, make sure that only one user can be associated with an email.
+    } else {
+      db.aemo_user_login.create({
+        userfirst_name: req.body.userfirst_name,
+        userlast_name: req.body.userlast_name,
+        user_email: req.body.user_email,
+        user_password: req.body.user_password
+      }).then(function() {
+        res.send({redirect: '/'});
+      }).catch(function(err) {
+        res.json(err);
+      });
+    }
+  })
 });
+
+// selectaemoone: function(tableInput1, colToSearch, valOfCol) {
+
+// var cat = {
+//   create: function(table, cols, vals, cb) {
+//     orm.insert("aemo_user_state", emotion_state, req.body.emotionState, function(res) {
+//       cb(res);
+//     });
+//   }
+// };
+
+
+//NEED HELP
+router.post('/emotion', function(req,res) {
+        orm.create([
+          "emotion_state"], [
+          req.body.emotionState
+        ], function(result) {
+          res.json(result);
+        })
+});
+
+// router.post('/emotion', function(req,res) {
+//         orm.insert(aemo_user_state, emotion_state, req.body.emotionState,function() {
+//           res.send({redirect: '/'});
+//         })
+// });
 
 module.exports = router;

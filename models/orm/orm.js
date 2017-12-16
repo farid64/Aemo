@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("../db/connection.js");
 
 var orm = {
     selectaemotwo: function(tableInput1, tableInput2, colToSearch, valOfCol) {

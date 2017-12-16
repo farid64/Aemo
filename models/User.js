@@ -40,7 +40,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
+  //}
+  // , {
     // classMethods: {
     //   associate: function(models) {
     //     // associations can be defined here
@@ -51,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
     // },
     // instanceMethods: {
     //   validPassword: function(password) {
-    //     return bcrypt.compareSync(password, this.password);
+    //     return bcrypt.compareSync(password, this.user_password);
     //   }
     // },
     // // Hooks are automatic methods that run during various phases of the User Model lifecycle
@@ -59,6 +60,7 @@ module.exports = function(sequelize, DataTypes) {
     // hooks: {
     //   beforeCreate: function(user, options, cb) {
     //     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    //     console.log(" so what is the users pw? " + user.password);
     //     cb(null, options);
     //   }
     // }
