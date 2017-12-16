@@ -194,14 +194,22 @@
                 function writeToDB(emotionState){
                     $.post("/users/emotion", {
                         emotion: emotionState
-                    }).then(function(data) {
-
+                    }, function(data){
+                        console.log("data " + data.action_taken_type);
+                        $("#command").html("Let's do this! " + data.action_taken_type + "And it will be..." + data.action_taken_subtype);
                     // console.log("data coming back " + JSON.stringify(data)); // {"redirect":"/"}
                         // window.location = data.redirect;
                     }).catch(function(err) {
                     console.log(err);
                     });
                 }
+
+// router.post('/emotion', function(req,res) {
+//         connection.query('SELECT action_taken_type, action_taken_subtype FROM aemo_user_state WHERE emotion_state = "' + req.body.emotion + '"', function (error, results, fields) {
+//             if (error) throw error;
+//             console.log(results);
+//         });
+// });
 
 
 

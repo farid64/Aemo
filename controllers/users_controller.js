@@ -64,11 +64,19 @@ router.post('/signup', function(req,res) {
 
 //NEED HELP
 router.post('/emotion', function(req,res) {
+    var result;
         connection.query('SELECT action_taken_type, action_taken_subtype FROM aemo_user_state WHERE emotion_state = "' + req.body.emotion + '"', function (error, results, fields) {
+            console.log("results inside controller " + JSON.stringify(results[0]));
             if (error) throw error;
-            console.log(results);
+            result = results[0];
+            res.json(results[0]);
         });
+
+
 });
+
+
+
 
 
 module.exports = router;
