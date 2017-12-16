@@ -4,6 +4,16 @@ var router   = express.Router();
 var passport = require("../config/passport");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var orm = require('../models/orm/orm.js');
+const MySQL = require('mysql');
+
+
+const connection = MySQL.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'aemo'
+});
+
 
 router.get('/signup', function(req,res) {
 	res.render('users/registration', {
@@ -51,31 +61,14 @@ router.post('/signup', function(req,res) {
   })
 });
 
-// selectaemoone: function(tableInput1, colToSearch, valOfCol) {
-
-// var cat = {
-//   create: function(table, cols, vals, cb) {
-//     orm.insert("aemo_user_state", emotion_state, req.body.emotionState, function(res) {
-//       cb(res);
-//     });
-//   }
-// };
-
 
 //NEED HELP
 router.post('/emotion', function(req,res) {
-        orm.create([
-          "emotion_state"], [
-          req.body.emotionState
-        ], function(result) {
-          res.json(result);
-        })
+        connection.query('SELECT action_taken_type, action_taken_subtype FROM aemo_user_state WHERE emotion_state = "' + req.body.emotion + '"', function (error, results, fields) {
+            if (error) throw error;
+            console.log(results);
+        });
 });
 
-// router.post('/emotion', function(req,res) {
-//         orm.insert(aemo_user_state, emotion_state, req.body.emotionState,function() {
-//           res.send({redirect: '/'});
-//         })
-// });
 
 module.exports = router;
