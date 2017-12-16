@@ -10,25 +10,35 @@ passport.use(new LocalStrategy(
     usernameField: "email",
     passwordField: "password"
   },
-  function(username, password, done) {
+  function(email, password, done) {
     // When a user tries to sign in this code runs
-    db.emo_user_login.findOne({
+    db.aemo_user_login.findOne({
       where: {
-        user_email: username
+        user_email: email
       }
     }).then(function(dbUser) {
       // If there's no user with the given username
+      console.log("dbUser is " + JSON.stringify(dbUser));
+
+    // {"id":1,"userfirst_name":"Bobb","userlast_name":"B",
+    // "user_email":"hello@yahoo.com","user_password":"Hello1234!",
+    // "createdAt":"2017-12-13T07:28:26.000Z",
+    // "updatedAt":"2017-12-13T07:28:26.000Z"}
+
+      console.log("password is " + password);
+      // password here is what the user just typed
+
       if (!dbUser) {
         return done(null, false, {
           message: "Incorrect Email."
         });
       }
       // If there is a user with the given username, but the password the user gives us is incorrect
-      else if (!dbUser.validPassword(password)) {
-        return done(null, false, {
-          message: "Incorrect password."
-        });
-      }
+      // else if (!dbUser.validPassword(password)) {
+      //   return done(null, false, {
+      //     message: "Incorrect password."
+      //   });
+      // }
       // If none of the above, return the user
       return done(null, dbUser);
     });

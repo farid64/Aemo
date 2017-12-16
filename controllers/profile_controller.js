@@ -6,14 +6,16 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 // only show profile if signed in
 router.get('/', isAuthenticated, function(req, res) {
 
-	db.User.findAll({
+	db.aemo_user_login.findAll({
     where: {
-    	UserId: req.user.id
+    	user_email: req.body.email
     }
   }).then(function(dbUser) {
   	console.log(dbUser);
-    res.render('profiles/profiles', {
-  		layout: 'main-profiles',
+      res.render('index', {
+      layout: 'main',
+    // res.render('profiles/profiles', {
+  		// layout: 'main-profiles',
   		// trip: dbTrip
   	});
   });
