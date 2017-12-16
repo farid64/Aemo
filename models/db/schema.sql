@@ -3,8 +3,11 @@ CREATE DATABASE aemo;
 
 USE aemo;
 
+drop table aemo_user_login;
+
 CREATE TABLE aemo_user_login (
   user_id INT AUTO_INCREMENT NOT NULL,
+  password VARCHAR (45) NOT NULL,
   userlast_name VARCHAR(45) NOT NULL,
   userfirst_name VARCHAR(45) NOT NULL,
   user_tmstmp TIMESTAMP NOT NULL,
